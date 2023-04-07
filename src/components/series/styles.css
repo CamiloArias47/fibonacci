@@ -1,0 +1,11 @@
+.series-table{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.series-table__title{
+    font-weight: 600;
+}
+.series-table__serie{
+    text-align: left;
+}
