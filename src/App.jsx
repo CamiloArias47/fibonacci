@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import useFibonnaci from './hooks/useFibonnaci'
 import Serie from './components/series'
 import AreaChart from './components/area-chart'
@@ -6,7 +6,8 @@ import AddForm from './components/add-form'
 import './App.css'
 
 function App () {
-  const { getFirstNumsOfSerie } = useFibonnaci()
+  const { getFirstNumsOfSerie, sortSeries } = useFibonnaci()
+  const seriesRendered = useRef([3, 5, 7, 10])
   const [fibSeries, setFibSeries] = useState([])
   useEffect(() => {
     const getFirst3nums = async () => {
@@ -30,9 +31,15 @@ function App () {
 
   const addSerieToRecursive = async num => {
     const newSerie = await getFirstNumsOfSerie(num)
-    const newSeries = structuredClone(fibSeries)
-    newSeries.push(newSerie)
-    setFibSeries(newSeries)
+    const exist = seriesRendered.current.find(serie => serie === num)
+    console.log({ exist })
+    if (exist === undefined) {
+      const newSeries = structuredClone(fibSeries)
+      newSeries.push(newSerie)
+      seriesRendered.current = [...seriesRendered.current, num]
+      const seriesOrdered = sortSeries(newSeries)
+      setFibSeries(seriesOrdered)
+    }
   }
 
   return (

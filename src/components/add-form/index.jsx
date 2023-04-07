@@ -3,8 +3,10 @@ import './styles.css'
 export default function AddForm ({submit}) {
   const calcular = e => {
     e.preventDefault()
-    const num = document.getElementById('number').value
+    const numInput = document.getElementById('number')
+    const num = parseInt(numInput.value)
     submit(num)
+    numInput.value = null
   }
 
   return (

@@ -17,5 +17,15 @@ export default function useFibonnaci () {
     return { serie: firstNums, nums, time }
   }
 
-  return { fibonacciRecursive, getFirstNumsOfSerie }
+  const sortSeries = series => {
+    const seriesSorted = series.sort((a, b) => {
+      if (a.serie > b.serie) return 1
+      if (a.serie < b.serie) return -1
+      return 0
+    })
+
+    return seriesSorted
+  }
+
+  return { fibonacciRecursive, getFirstNumsOfSerie, sortSeries }
 }
