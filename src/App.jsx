@@ -52,9 +52,7 @@ function App () {
 
   const addSerieToRecursive = async num => {
     setIsExecuting(true)
-    console.log('ejecutando...')
     const newSerie = await getFirstNumsOfSerie(num)
-    console.log('finish...')
     setIsExecuting(false)
     const exist = seriesRendered.current.find(serie => serie === num)
     if (exist === undefined) {
