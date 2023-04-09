@@ -1,0 +1,15 @@
+.calculando{
+  z-index: 5;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+}
+.calculando__frame{
+    padding: 2rem;
+    background-color: rgb(60, 61, 61);
+    border-radius: 15px;
+    width: 30%;
+    margin-top: 250px;
+}
